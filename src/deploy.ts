@@ -6,7 +6,9 @@ import {commands} from "./config/commands.conf"
 
 dotenv.config();
 
-const rest = new REST({version: "9"}).setToken(String(process.env.BOT_TOKEN));
-rest.put(Routes.applicationGuildCommands("952855796939636788","592083979969232946"), {body: commands})
-.then(()=>console.log("Successfully registered"))
-.catch(console.error)
+export const initCommands = (serverID: string) =>{
+    const rest = new REST({version: "9"}).setToken(String(process.env.BOT_TOKEN));
+    rest.put(Routes.applicationGuildCommands(String(process.env.APP_ID) ,serverID), {body: commands})
+    .then(()=>console.log("Successfully registered"))
+    .catch(console.error)
+}
