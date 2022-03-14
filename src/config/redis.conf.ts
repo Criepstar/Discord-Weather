@@ -11,13 +11,11 @@ export const getGuildLocation = async (guildID: string) => {
   await redis
     .get(guildID)
     .then(async (res) => {
-      console.log(res);
       results = res;
     })
     .catch((err) => {
       console.error(err);
       results = null;
     });
-  console.log(results);
   return results;
 };

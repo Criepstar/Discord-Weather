@@ -12,7 +12,6 @@ export const currentWeatherMethod = async (interaction: CommandInteraction) => {
       fetchData(interaction, String(location))
   }else{
     let cachedLocation = await getGuildLocation(String(interaction.guildId));
-    console.log(cachedLocation)
     if(cachedLocation){
       fetchData(interaction, String(cachedLocation))
     }else{
@@ -28,7 +27,6 @@ const fetchData = async(interaction: CommandInteraction, location: string)=>{
         )
         .then(async (res) => {
           const body = res.data;
-          console.log(body.current.condition.icon);
           const current = body.location.localtime;
           const time = current.substr(current.length - 5);
           await interaction.editReply({

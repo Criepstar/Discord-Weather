@@ -12,7 +12,6 @@ export const forecastMethod = async(interaction: CommandInteraction) => {
         fetchForecast(interaction, String(location))
     }else{
         let cachedLocation = await getGuildLocation(String(interaction.guildId));
-    console.log(cachedLocation)
     if(cachedLocation){
       fetchForecast(interaction, String(cachedLocation))
     }else{
@@ -31,7 +30,6 @@ const fetchForecast = (interaction: CommandInteraction, location: string)=>{
         })
         for (let i = 0; i < forecast.length; i++) {
             const element = forecast[i];
-            console.log(element.date, element.day)
             await interaction.channel?.send({
                 content: `-------------${element.date}-------------\n\n${element.day.condition.text}\n\nAverage temperature: ${element.day.avgtemp_c}°C | ${element.day.avgtemp_f}°F \nMax wind: ${element.day.maxwind_kph}kph | ${element.day.maxwind_mph}mph\nAverage humidity: ${element.day.avghumidity}%\nRain possibility: ${element.day.daily_chance_of_rain}%\nSnow possibility: ${element.day.daily_chance_of_snow}%`,
                 files: ["http:"+ element.day.condition.icon]
