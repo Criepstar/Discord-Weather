@@ -11,6 +11,9 @@ Required ```Node version 16+```
 
 1. Clone the repository
 2. Run ```npm install```in your projects terminal
-3. Add your bot and application ID from Discord and your https://www.weatherapi.com/ API key to the .env file
+3. Add an .env file 
+```BOT_TOKEN=Discord bot secret
+APP_ID=Discord application id
+API_KEY=https://weatherapi.com API key```
 4. Run ```npm run build```
 5. Run the ```index.js``` file inside the ```dist``` directory
